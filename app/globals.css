@@ -15,12 +15,15 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
+    font-family: 'Merriweather',
+      serif;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background: antiquewhite;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  color: #0a0a0a;
 }

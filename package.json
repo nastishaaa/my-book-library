@@ -9,16 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@deemlol/next-icons": "^0.1.9",
+    "@prisma/client": "^6.11.0",
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
+    "formik": "^2.4.6",
+    "framer-motion": "^12.23.0",
+    "mongoose": "^8.16.1",
+    "next": "15.3.4",
+    "next-auth": "^4.24.11",
+    "prisma": "^6.11.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.4"
+    "yup": "^1.6.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
