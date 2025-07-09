@@ -3,22 +3,26 @@ import { Book } from "@/models/Book";
 import { connection } from "@/lib/mongoose";
 import { getToken } from "next-auth/jwt";
 
-export async function PATCH(
-    req: NextRequest,
-    context: { params: { id: string } }
-) {
+export async function PATCH(req: NextRequest) {
     try {
         await connection();
-        const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
+        const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
         if (!token || !token.sub) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        }
+
+        const url = new URL(req.url);
+        const id = url.pathname.split("/").pop(); 
+        
+        if (!id) {
+            return NextResponse.json({ message: "Missing ID" }, { status: 400 });
         }
 
         const data = await req.json();
 
         const book = await Book.findOneAndUpdate(
-            { _id: context.params.id, userId: token.sub },
+            { _id: id, userId: token.sub },
             data,
             { new: true }
         );
@@ -28,6 +32,7 @@ export async function PATCH(
         }
 
         return NextResponse.json({ message: "Book updated", book }, { status: 200 });
+
     } catch (error) {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
