@@ -11,7 +11,7 @@ const playfairFont = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "MyBookList | mBL",
+  title: "MyBookLibrary | mBL",
   description: "App for book lovers",
 };
 
