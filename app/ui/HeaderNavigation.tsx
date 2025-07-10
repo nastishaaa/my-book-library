@@ -17,7 +17,7 @@ export default function HeaderNavigation() {
                 <Link href='/'>
                     <h1 className="text-2xl text-[#6F4E37] flex items-center gap-2 font-[var(--font-playfair)]">
                         <Image
-                            src="/MyBookLibrary-logo.png"
+                            src="/favicon.png"
                             alt="Book Library logo"
                             width={40}
                             height={40} />
