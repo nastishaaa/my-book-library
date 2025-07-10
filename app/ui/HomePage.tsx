@@ -6,7 +6,7 @@ export default function HomePage() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-yellow-50 to-orange-100 px-6 py-12 text-center">
             <h1 className="text-5xl md:text-6xl font-extrabold text-amber-800 mb-4">
-                Welcome to <span className="text-orange-600">My Book List</span>
+                Welcome to <span className="text-orange-600">My Book Library</span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-700 max-w-xl mb-8">

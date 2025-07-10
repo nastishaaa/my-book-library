@@ -13,6 +13,9 @@ const playfairFont = Playfair_Display({
 export const metadata: Metadata = {
   title: "MyBookLibrary | mBL",
   description: "App for book lovers",
+  icons: {
+    icon: "/favicon.png", 
+  },
 };
 
 export default function RootLayout({

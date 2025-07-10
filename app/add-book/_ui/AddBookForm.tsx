@@ -48,7 +48,6 @@ export default function AddBookForm() {
         actions: FormikHelpers<FormValues>
     ) => {
         setFormError('');
-      
         try {
             await axios.post('/api/book/add', values, {
                 withCredentials: true,
