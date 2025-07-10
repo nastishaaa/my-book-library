@@ -11,7 +11,6 @@ export async function POST(req: NextRequest) {
             req,
             secret: process.env.NEXTAUTH_SECRET,
         });
-        console.log("🔐 Token from cookie:", token);
 
         if (!token || !token.sub) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
@@ -38,7 +37,6 @@ export async function POST(req: NextRequest) {
             { status: 201 }
         );
     } catch (error) {
-        console.error("Error adding book:", error);
         return NextResponse.json(
             { message: "Internal Server Error" },
             { status: 500 }
