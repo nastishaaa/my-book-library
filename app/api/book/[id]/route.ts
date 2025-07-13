@@ -3,6 +3,21 @@ import { Book } from "@/models/Book";
 import { connection } from "@/lib/mongoose";
 import { getToken } from "next-auth/jwt";
 
+export async function GET (req: NextRequest,
+    { params }: { params: { id: string } }
+) {
+    await connection();
+    try {
+        const book = await Book.findById(params.id);
+        if (!book) {
+            return NextResponse.json({ error: 'Book not found' }, { status: 404 });
+        }
+        return NextResponse.json(book, { status: 200 });
+    } catch (error: any) {
+        return NextResponse.json({ error: 'Server error' }, { status: 500 });
+    }
+}
+
 export async function PATCH(req: NextRequest) {
     try {
         await connection();

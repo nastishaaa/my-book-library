@@ -1,8 +1,11 @@
 'use client'
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import BookItem from "./BookItem";
 import FindBookInput from "./FindBookInput";
+
 import { fetchBooks } from "@/utils/fetch-books";
 import { useSession } from "next-auth/react";
 import { filterBooks } from "@/utils/filter";
@@ -21,6 +24,11 @@ export default function BookList() {
   const [allBooks, setAllBooks] = useState<Book[]>([]);
   const [books, setBooks] = useState<Book[]>([]);
 
+  const router = useRouter();
+
+  const handleRoute = (book: Book) => {
+    router.push(`/books/${book._id}`);
+  }
   const handleChange = (value: string) => {
     if (value.trim() === '') {
       setBooks(allBooks);
@@ -86,6 +94,7 @@ export default function BookList() {
           <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {books.map((book) => (
               <li
+                onClick={() => {handleRoute(book)}}
                 key={book._id}
                 className="bg-[#fffaf5] border border-[#e0d6ca] rounded-2xl shadow-md hover:shadow-lg transition p-6"
               >

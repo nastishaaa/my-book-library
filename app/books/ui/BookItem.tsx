@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function BookItem({ book, onClick }: Props) {
-    
+
     return (
         <div className="bg-[#fffaf3] border border-[#e0d2c0] shadow-md rounded-2xl p-4 hover:shadow-lg transition">
             <h2 className="text-xl font-semibold text-[#4b2e22] mb-1">{book.title}</h2><button
