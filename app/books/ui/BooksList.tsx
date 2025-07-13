@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation';
 
 import BookItem from "./BookItem";
 import FindBookInput from "./FindBookInput";
