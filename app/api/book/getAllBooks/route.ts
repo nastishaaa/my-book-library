@@ -15,8 +15,6 @@ export async function GET(req: NextRequest) {
 
         const books = await Book.find({ userId: token.sub });
 
-        console.log("📚 FOUND BOOKS:", books);
-
         return NextResponse.json(books, { status: 200 });
     } catch (error) {
         console.error("❌ ERROR IN GET BOOKS:", error);
