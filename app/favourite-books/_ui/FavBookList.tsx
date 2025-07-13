@@ -39,15 +39,32 @@ export default function FavBookList() {
     }, [session]);
 
     return (
-        <div>
-            <ul>
-                {favouriteBooks.map(book => (
-                    <li key={book._id}>
-                        <BookItem book={book} onClick={handleClick}/>
-                </li>
-                ))}
-            </ul>
+        <>
+            {favouriteBooks.length === 0 ? (
+                <div className="text-center p-6">
+                    <h3 className="text-xl font-semibold mb-2">You haven't added any favourites yet</h3>
+                    <p className="text-gray-600 mb-4">
+                        Start exploring the library and click the ❤️ icon to save books you love.
+                    </p>
+                    <button
+                        onClick={() => window.location.href = '/books'}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200"
+                    >
+                        Browse Books
+                    </button>
+                </div>
+            ) : (
+
+                <div>
+                    <ul>
+                        {favouriteBooks.map(book => (
+                            <li key={book._id}>
+                                <BookItem book={book} onClick={handleClick} />
+                            </li>
+                        ))}
+                    </ul>
             
-        </div>
+                </div>)}
+        </>
     )
 }
