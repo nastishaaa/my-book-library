@@ -6,6 +6,7 @@ import { useId, useState } from "react";
 import * as Yup from 'yup';
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import toast from "react-hot-toast";
 
 export type FormValuesRegister = {
     name: string,
@@ -52,8 +53,14 @@ export default function RegisterForm() {
             });
             if (res && res.status === 200) {
                 router.push("/books");
+                toast.success('Success registration!',
+                    { duration: 5000 },
+                );
             } else {
                 setFormError("Registration succeeded but login failed.");
+                toast.error('Something went wrong!',
+                    { duration: 5000 },
+                )
             }
         } catch (error: any) {
             setFormError(error.message || "Registration error");

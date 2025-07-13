@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import Link from "next/link";
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export type FormValuesLogin = {
     email: string;
@@ -46,11 +47,16 @@ export default function LoginForm() {
         });
     
         if (res?.error) {
-            setFormError(res.error === "CredentialsSignin" ? "Invalid email or password" : res.error);
+            toast.error('Wrong password or email!',
+                { duration: 5000 },
+            );
         } else if (res?.ok) {
             const session = await getSession();
             if (session) {
                 router.push("/favourite-books");
+                toast.success('Success login!', 
+                    { duration: 5000 },
+                );
             } else {
                 setFormError("Session not established. Try again.");
             }

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import HeaderNavigation from "./ui/HeaderNavigation";
-import SessionWrapper from "./SessionWrapper"; // 👈 нове
+import SessionWrapper from "./SessionWrapper"; 
+import { Toaster } from 'react-hot-toast';
 
 const playfairFont = Playfair_Display({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Toaster position="top-right"/>
         <SessionWrapper>
           <HeaderNavigation />
           {children}
