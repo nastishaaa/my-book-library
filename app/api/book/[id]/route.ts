@@ -3,16 +3,25 @@ import { Book } from "@/models/Book";
 import { connection } from "@/lib/mongoose";
 import { getToken } from "next-auth/jwt";
 
-export async function GET (req: NextRequest,
-    { params }: { params: { id: string } }
-) {
+export async function GET(req: NextRequest) {
     await connection();
+
     try {
-        const book = await Book.findById(params.id);
+        const url = new URL(req.url);
+        const id = url.pathname.split("/").pop();
+
+        if (!id) {
+            return NextResponse.json({ error: 'Missing ID' }, { status: 400 });
+        }
+
+        const book = await Book.findById(id);
+
         if (!book) {
             return NextResponse.json({ error: 'Book not found' }, { status: 404 });
         }
+
         return NextResponse.json(book, { status: 200 });
+
     } catch (error: any) {
         return NextResponse.json({ error: 'Server error' }, { status: 500 });
     }
