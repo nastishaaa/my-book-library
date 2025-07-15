@@ -1,11 +1,12 @@
 'use client';
 
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
-import { useId, useState } from 'react';
-import * as Yup from 'yup';
+import { useId } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
+
+import { validationBookSchema } from '@/app/validation/validationBookSchema';
 
 type FormValues = {
     title: string;
@@ -23,31 +24,19 @@ const initialValues: FormValues = {
     description: '',
 }
 
-const validationSchema = Yup.object({
-    title: Yup.string().required('Required'),
-    author: Yup.string().required('Required'),
-    published: Yup.date().nullable(),
-    genre: Yup.string().required('Required'),
-    description: Yup.string().required('Required'),
-});
-
 export default function AddBookForm() {
-    // const { data: session } = useSession();
-
     const titleId = useId();
     const authorId = useId();
     const publishedId = useId();
     const genreId = useId();
     const descriptionId = useId();
 
-    const [formError, setFormError] = useState('');
     const router = useRouter();
 
     const handleSubmit = async (
         values: FormValues,
         actions: FormikHelpers<FormValues>
     ) => {
-        setFormError('');
         try {
             await axios.post('/api/book/add', values, {
                 withCredentials: true,
@@ -55,10 +44,14 @@ export default function AddBookForm() {
                     'Content-Type': 'application/json',
                 },
             });
+
             router.push('/books');
+            toast.success('Book added successfully',
+                { duration: 5000 }, );
         } catch (error: any) {
-            console.error('Error adding book:', error);
-            setFormError(error?.response?.data?.message || 'Failed to add book');
+            toast.error(`Error adding book: ${error}`,
+                { duration: 5000 },
+            )
         }
         actions.setSubmitting(false);
     }   
@@ -72,7 +65,7 @@ export default function AddBookForm() {
             <Formik
                 initialValues={initialValues}
                 onSubmit={handleSubmit}
-                validationSchema={validationSchema}
+                validationSchema={validationBookSchema}
             >
                 {({ isSubmitting }) => (
                     <Form className="flex flex-col gap-5">
@@ -141,8 +134,6 @@ export default function AddBookForm() {
                             />
                             <ErrorMessage name="description" component="div" className="text-sm text-red-500" />
                         </div>
-
-                        {formError && <p className="text-red-600 text-sm">{formError}</p>}
 
                         <button
                             type="submit"

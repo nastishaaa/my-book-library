@@ -1,4 +1,4 @@
-import NoAuthorizePage from "../ui/NoAuthorizePage"
+import NoAuthorizePage from "../components/NoAuthorizePage"
 export default function UnauthorizedPage() {
     return (
         <>

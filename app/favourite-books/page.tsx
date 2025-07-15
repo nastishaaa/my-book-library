@@ -1,4 +1,4 @@
-import FavBookList from './_ui/FavBookList';
+import FavBookList from './components/FavBookList';
 import ProtectedRoute from '@/components/PrivateRoute';
 
 export default function FavBooksPage() {

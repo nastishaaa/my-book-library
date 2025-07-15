@@ -1,16 +1,27 @@
 import { Book } from "./BooksList";
+import { useBooksStore } from "@/app/store/book-state";
+import { useSession } from "next-auth/react";
 
 interface Props {
     book: Book,
-    onClick: (book: Book) => void;
 }
 
-export default function BookItem({ book, onClick }: Props) {
+export default function BookItem({ book }: Props) {
+    const { data: session } = useSession();
+    const accessToken = session?.accessToken;
 
+    const { addToFavourite } = useBooksStore();
+
+    if (!accessToken) return;
+    
     return (
         <div className="bg-[#fffaf3] border border-[#e0d2c0] shadow-md rounded-2xl p-4 hover:shadow-lg transition">
             <h2 className="text-xl font-semibold text-[#4b2e22] mb-1">{book.title}</h2><button
-                onClick={(e => onClick(book))}
+                onClick={(e) =>{
+                    e.stopPropagation(); 
+                    addToFavourite(book._id, accessToken);
+                }}
+                
                 className="float-right text-lg"
                 title={book.isFavourite ? "Remove from favourites" : "Add to favourites"}
             >

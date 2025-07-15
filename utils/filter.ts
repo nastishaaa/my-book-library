@@ -1,4 +1,4 @@
-import { Book } from "@/app/books/ui/BooksList";
+import { Book } from "@/app/books/components/BooksList";
 
 export function filterBooks(books: Book[], query: string): Book[] {
     const lower = query.toLowerCase();

@@ -1,6 +1,6 @@
 'use client';
 
-import { Book } from '@/app/books/ui/BooksList';
+import { Book } from '@/app/books/components/BooksList';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';

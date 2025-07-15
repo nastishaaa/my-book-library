@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
-import HeaderNavigation from "./ui/HeaderNavigation";
+import HeaderNavigation from "./components/HeaderNavigation";
 import SessionWrapper from "./SessionWrapper"; 
 import { Toaster } from 'react-hot-toast';
 
@@ -33,7 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Toaster position="top-right"/>
+        <Toaster position="top-right" />
         <SessionWrapper>
           <HeaderNavigation />
           {children}

@@ -1,8 +1,8 @@
-import { Metadata } from "next"
-import BookHeader from "./ui/BookHeader"
-import BooksList from "./ui/BooksList"
+import { Metadata } from "next";
+import BookHeader from "./components/BookHeader";
+import BooksList from "./components/BooksList";
 import ProtectedRoute from "@/components/PrivateRoute";
-import AddNewBookBtn from "./ui/AddNewBookBtn";
+import AddNewBookBtn from "./components/AddNewBookBtn";
 
 export const metadata: Metadata = {
     title: "Books | mBL",

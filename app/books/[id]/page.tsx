@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from "next/navigation";
-import BookDetail from "./_ui/BookPage";
+import BookDetail from "./components/BookPage";
 
 export default function BookDetailsPage() {
     const param = useParams();

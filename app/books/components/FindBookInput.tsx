@@ -1,7 +1,7 @@
 import { Book } from "./BooksList";
 
 interface Props {
-  handleOnChange: (value: string) => void;
+    handleOnChange: (value: string) => void;
 }
 
 export default function FindBookInput({ handleOnChange }: Props) {
