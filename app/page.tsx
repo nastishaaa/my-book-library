@@ -1,7 +1,7 @@
 'use client'
 
 import HomePage from './components/HomePage';
-import HomePageForAuthorizeUser from './components/HomePageForUnauthorizeUser';
+import HomePageForAuthorizeUser from './components/HomePageForAuthorizeUser';
 import { useSession } from 'next-auth/react';
 
 export default function Home() {

@@ -44,7 +44,7 @@ export default function HomePage() {
             <section className="mt-12 bg-[#e4d1a0] text-[#4f3a23] p-8 rounded-xl shadow-lg max-w-5xl mx-auto">
                 <h2 className="text-3xl font-bold mb-4">Why Reading is Magical</h2>
                 <p className="text-lg font-light mb-6">Books are not just pages bound together; they are worlds waiting to be explored. Whether you read to escape, to learn, or to grow, each page brings you closer to a deeper understanding of the world and yourself. Start your journey today!</p>
-                <Link href="/books">
+                <Link href="/login">
                     <button className="px-8 py-3 bg-[#6a4f32] text-white text-lg rounded-xl shadow-md hover:bg-[#5c4329] transition-all duration-300">
                         Explore the Magic
                     </button>
