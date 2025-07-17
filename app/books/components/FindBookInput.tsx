@@ -1,5 +1,3 @@
-import { Book } from "./BooksList";
-
 interface Props {
     handleOnChange: (value: string) => void;
 }

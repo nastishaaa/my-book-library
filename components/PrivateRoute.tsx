@@ -19,9 +19,5 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
         }
     }, [status, router]);
 
-    if (!checked) {
-        return <p className="text-center mt-10">Loading protected content...</p>;
-    }
-
     return <>{children}</>;
 }

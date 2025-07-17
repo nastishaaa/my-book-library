@@ -2,16 +2,15 @@
 
 import { Book } from '@/app/books/components/BooksList';
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-interface BookDetailProps {
-  bookId: string;
-}
-
-export default function BookDetail({ bookId }: BookDetailProps) {
+export default function BookDetail() {
     const [book, setBook] = useState<Book | null>(null);
-    const [loading, setLoading] = useState(true);
+
+    const params = useParams();
+    const bookId = params?.id as string;
 
     useEffect(() => {
         const findBook = async () => {
@@ -20,17 +19,11 @@ export default function BookDetail({ bookId }: BookDetailProps) {
                 setBook(response.data);
             } catch (error) {
                 toast.error('Book not found!', { duration: 4000 });
-            } finally {
-                setLoading(false);
             }
         };
 
         findBook();
     }, [bookId]);
-
-    if (loading) {
-        return <div className="text-center text-[#a67c52] mt-10">Loading book...</div>;
-    }
 
     if (!book) {
         return <div className="text-center text-[#a67c52] mt-10">Book not found.</div>;
